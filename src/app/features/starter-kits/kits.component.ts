@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../../core/cart.service';
 import { DatasetService } from '../../core/dataset.service';
 import { ImpactBadgeComponent } from '../../shared/impact-badge.component';
 
@@ -37,6 +38,11 @@ import { ImpactBadgeComponent } from '../../shared/impact-badge.component';
       background: var(--green);
       color: #fff;
     }
+
+    .kit-actions { display: grid; gap: 8px; margin-top: 14px; }
+    .kit-actions .button { justify-content: center; padding: 13px 14px; font-size: 11px; width: 100%; }
+    .kit-cart-button { background: transparent; color: var(--green); border: 1px solid var(--green); }
+    .kit-cart-button.in-cart { background: #e8f0e6; color: #3d7150; border-color: #b8cbb3; }
 
     .visual-caption {
       color: #fff;
@@ -76,7 +82,7 @@ import { ImpactBadgeComponent } from '../../shared/impact-badge.component';
     <section class="kits-section container">
       <div class="section-heading kits-heading">
         <div><div class="eyebrow">OUR TWO KITS</div><h2>Start with what<br><em>you need.</em></h2></div>
-        <p>Choose dinnerware, cookware, or both. Each kit is pre-loved, cleaned and checked for a fresh start.</p>
+        <p>Pick the one that suits you. The cookware kit includes everything in the dinnerware kit, plus pots, pans and cooking tools. Each kit is pre-loved, cleaned and checked.</p>
       </div>
       <div class="kits-grid">
         @for (kit of data.kits; track kit.id) {
@@ -86,10 +92,10 @@ import { ImpactBadgeComponent } from '../../shared/impact-badge.component';
               <div class="kit-tag">{{ kit.label }}</div>
             </div>
             <div class="kit-body">
-              <div class="kit-title-row"><div><h3>{{ kit.name }}</h3><p>{{ kit.summary }}</p></div></div>
+              <div class="kit-title-row"><div><h3>{{ kit.name }}</h3><p>{{ kit.summary }}</p></div><strong>£{{ kit.price }}</strong></div>
               <app-impact-badge />
               <div class="kit-includes">
-                <span>THE KIT FOCUSES ON</span>
+                <span>WHAT'S INCLUDED</span>
                 <ul>@for (item of kit.contents; track item) { <li>{{ item }}</li> }</ul>
                 <p class="kit-contents-note">Exact items and quantities are confirmed before ordering.</p>
               </div>
@@ -97,7 +103,11 @@ import { ImpactBadgeComponent } from '../../shared/impact-badge.component';
                 <button type="button" class="impact-code" (click)="impactOpen.set(impactOpen() === kit.id ? null : kit.id)" [attr.aria-expanded]="impactOpen() === kit.id" title="View circular impact story">
                   <span class="qr-art" aria-hidden="true">▞▚<br>▚▞</span><small>CIRCULAR<br>IMPACT CODE ↗</small>
                 </button>
-                <a class="button button-dark" routerLink="/mobile-flow" [queryParams]="{ kit: kit.id }">Choose this kit ↗</a>
+                
+              </div>
+              <div class="kit-actions">
+                <a class="button button-dark" routerLink="/mobile-flow" [queryParams]="{ kit: kit.id }">Pre-order to your halls ↗</a>
+                <button type="button" class="button kit-cart-button" [class.in-cart]="cart.kitId() === kit.id" (click)="toggleCart(kit.id)" [attr.aria-pressed]="cart.kitId() === kit.id">{{ cart.kitId() === kit.id ? 'In cart ✓' : 'Add to cart, home delivery' }}</button>
               </div>
               @if (impactOpen() === kit.id) {
                 <div class="impact-story"><strong>Every item gets another chapter.</strong><p>Collected on campus, cleaned and checked, then packed for a new student room. A scannable item history is planned for the live service.</p></div>
@@ -110,12 +120,16 @@ import { ImpactBadgeComponent } from '../../shared/impact-badge.component';
           <div class="kit-marketplace-copy"><span class="eyebrow">BEYOND THE KITS</span><h3>Explore the<br><em>marketplace.</em></h3><p>Find individual pre-loved pieces with their own stories, from useful room essentials to unexpected campus treasures.</p><span class="marketplace-cta">Shop marketplace <span aria-hidden="true">↗</span></span></div>
         </a>
       </div>
-      <p class="kits-note">Product illustrations are illustrative. Prices and final contents will be shared before any order is placed.</p>
+      <p class="kits-note">Photos are illustrative. Exact items and quantities are confirmed before delivery.</p>
     </section>
     <section class="promise-band"><div class="container promise-grid"><div><span>✳</span><strong>Cleaned and checked</strong><p>Ready for a confident fresh start.</p></div><div><span>⌂</span><strong>Delivered to your room</strong><p>There before your first move-in day.</p></div><div><span>◎</span><strong>A circular story</strong><p>See the difference your choice makes.</p></div></div></section>
   `
 })
 export class KitsComponent {
   data = inject(DatasetService);
+  cart = inject(CartService);
   impactOpen = signal<string | null>(null);
+  toggleCart(id: string): void {
+    if (this.cart.kitId() === id) this.cart.removeKit(); else this.cart.setKit(id);
+  }
 }

@@ -49,3 +49,40 @@
 @media(max-width:760px){.kits-grid{grid-template-columns:1fr;max-width:540px}.kit-marketplace-art{height:220px}}
 @media(max-width:1050px){.desktop-nav,.nav-cta{display:none}.menu-toggle{display:flex;margin-left:auto;border:0;background:none;color:#fff;gap:8px;align-items:center;font-size:12px;font-weight:800}.mobile-nav{display:grid;background:#1d3a31;padding:16px 20px}.mobile-nav a{padding:13px 0;border-bottom:1px solid #ffffff20;font-size:13px}}
 .listing-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.listing-image .listing-category,.listing-image .listing-item-no{z-index:1}.listing-image:has(.listing-photo):before{display:none}.listing-image:has(.listing-photo) .listing-item-no{color:#fff;text-shadow:0 1px 3px #0008}.modal-image{position:relative;overflow:hidden;min-height:320px}
+
+/* Order forms: shared by the halls pre-order flow and the cart checkout */
+.order-card{background:#fcfbf6;border:1px solid #e1e3da;border-radius:6px;box-shadow:0 20px 45px #24403420;padding:32px;color:var(--green);width:100%;max-width:520px;justify-self:center}
+.order-card .phone-content{min-height:420px;padding-top:28px}
+.order-card .phone-step{font-size:10px}
+.order-card .phone-content h2{font-size:36px}
+.order-card .phone-content>p{font-size:13px}
+.order-card .phone-kit{padding:12px;gap:14px;align-items:flex-start}
+.order-card .phone-kit input{margin-top:16px}
+.order-kit-info{flex:1}
+.order-kit-info strong{font-size:14px}
+.order-kit-info small{font-size:11px;line-height:1.5}
+.order-kit-items{font-size:11px;line-height:1.6;color:#53645b;margin:6px 0 0;padding-left:16px}
+.order-kit-items li::marker{color:#be8b49}
+.order-kit-price{font-size:16px}
+.order-kit-thumb{width:72px;height:48px;object-fit:cover;border-radius:3px;flex:none}
+.order-thumb-emoji{width:72px;height:48px;border-radius:3px;flex:none;display:grid;place-items:center;font-size:24px}
+.order-thumb-emoji.mint{background:#dae6db}.order-thumb-emoji.sand{background:#e9e2d1}.order-thumb-emoji.peach{background:#eddcca}.order-thumb-emoji.lilac{background:#e6dfe8}
+.order-line{display:flex;align-items:center;gap:14px;border:1px solid #e1e3da;background:#fff;padding:12px;margin-bottom:10px}
+.order-line strong,.order-line small{display:block}
+.order-line strong{font-size:13px}
+.order-line small{font-size:11px;color:#8d978e;margin-top:3px}
+.order-line b{font-size:15px}
+.order-remove{border:0;background:none;color:#a56b27;font-size:11px;font-weight:800;padding:4px 0 0}
+.order-card .field-label{font-size:11px}
+.order-card .field-label input{font-size:13px;padding:12px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field-row .field-label{margin-top:0}
+.order-card .check-option,.order-card .order-summary span{font-size:12px}
+.order-summary .order-total{font-size:14px;border-top:1px solid #c9d2c5;padding-top:10px;margin-top:2px}
+.demo-note{display:block;font-size:11px;line-height:1.5;color:#8a6d38;background:#f7ebd8;padding:10px 12px;margin:4px 0 14px}
+.order-card .phone-next{font-size:12px;padding:16px}
+.order-card .back-button{font-size:12px}
+.order-card .phone-actions{margin-top:24px}
+.order-switch{font-size:12px;color:#65756b;margin-top:22px}
+.order-switch a{font-weight:800;color:var(--green);border-bottom:1px solid currentColor}
+@media(max-width:900px){.order-card{padding:22px}}
