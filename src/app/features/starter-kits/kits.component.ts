@@ -7,6 +7,62 @@ import { ImpactBadgeComponent } from '../../shared/impact-badge.component';
   selector: 'app-kits',
   standalone: true,
   imports: [RouterLink, ImpactBadgeComponent],
+  styles: [`
+    .kit-visual {
+      isolation: isolate;
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+
+    .kit-visual::before {
+      display: none;
+    }
+
+    .kit-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    .kit-tag,
+    .visual-caption {
+      z-index: 2;
+    }
+
+    .kit-visual .kit-tag {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .visual-caption {
+      color: #fff;
+      text-shadow: 0 1px 3px #0008;
+    }
+
+    .kit-marketplace-art {
+      isolation: isolate;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      place-items: start;
+    }
+
+    .kit-marketplace-art::before {
+      display: none;
+    }
+
+    .kit-marketplace-art .kit-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 2;
+      background: var(--green);
+      color: #fff;
+    }
+  `],
   template: `
     <div class="page-banner kits-banner">
       <div class="container">
@@ -26,9 +82,8 @@ import { ImpactBadgeComponent } from '../../shared/impact-badge.component';
         @for (kit of data.kits; track kit.id) {
           <article class="kit-card">
             <div class="kit-visual" [class]="'kit-visual ' + kit.tone">
+              <img class="kit-photo" [src]="kit.image" [alt]="kit.imageAlt" loading="lazy">
               <div class="kit-tag">{{ kit.label }}</div>
-              <div class="kit-object" aria-hidden="true">{{ kit.image }}</div>
-              <span class="visual-caption">DISH DASH DOSH ESSENTIALS / 0{{ $index + 1 }}</span>
             </div>
             <div class="kit-body">
               <div class="kit-title-row"><div><h3>{{ kit.name }}</h3><p>{{ kit.summary }}</p></div></div>
@@ -51,7 +106,7 @@ import { ImpactBadgeComponent } from '../../shared/impact-badge.component';
           </article>
         }
         <a class="kit-marketplace-card" routerLink="/marketplace" aria-label="Explore the campus marketplace">
-          <div class="kit-marketplace-art"><span class="kit-tag">CAMPUS MARKETPLACE</span><span class="marketplace-art-icon" aria-hidden="true">✳</span><span class="visual-caption">ONE-OFF FINDS / ALL YEAR ROUND</span></div>
+          <div class="kit-marketplace-art"><img class="kit-photo" src="/images/marketplace.jpeg" alt="Pre-loved marketplace finds with price tags, including a kettle, books, a lava lamp and badminton rackets, on a kitchen table" loading="lazy"><span class="kit-tag">CAMPUS MARKETPLACE</span></div>
           <div class="kit-marketplace-copy"><span class="eyebrow">BEYOND THE KITS</span><h3>Explore the<br><em>marketplace.</em></h3><p>Find individual pre-loved pieces with their own stories, from useful room essentials to unexpected campus treasures.</p><span class="marketplace-cta">Shop marketplace <span aria-hidden="true">↗</span></span></div>
         </a>
       </div>

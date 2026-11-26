@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export interface Kit { id: string; name: string; label: string; tone: string; image: string; contents: string[]; summary: string; }
+export interface Kit { id: string; name: string; label: string; tone: string; image: string; imageAlt: string; contents: string[]; summary: string; }
 export interface Listing { id: number; name: string; price: number; condition: 'Good condition' | 'Refurbished'; category: string; icon: string; color: string; description: string; }
 export interface Audit { title: string; detail: string; status: string; date: string; icon: string; }
 
@@ -22,8 +22,8 @@ export class DatasetService {
     { title: 'Textile fire safety', detail: 'Fire-safety labels and care tags checked on bedding and soft furnishings.', status: 'Verified', date: '10 Aug 2026', icon: '◇' }
   ];
   readonly kits: Kit[] = [
-    { id: 'dinnerware', name: 'Dinnerware Kit', label: 'For the table', tone: 'stone', image: '🍽️', summary: 'The everyday pieces for meals in your new space.', contents: ['Plates and bowls', 'Mugs and cutlery'] },
-    { id: 'cookware', name: 'Cookware Kit', label: 'For the kitchen', tone: 'sage', image: '🍳', summary: 'The essentials for preparing your own meals.', contents: ['Pans and cooking tools', 'Food preparation essentials'] }
+    { id: 'dinnerware', name: 'Dinnerware Kit', label: 'For the table', tone: 'stone', image: '/images/kitchenware-kit.jpeg', imageAlt: 'Dinnerware kit arranged on a kitchen table beside its delivery box', summary: 'The everyday pieces for meals in your new space.', contents: ['Plates and bowls', 'Mugs and cutlery'] },
+    { id: 'cookware', name: 'Cookware Kit', label: 'For the kitchen', tone: 'sage', image: '/images/cookware-kit.jpeg', imageAlt: 'Cookware kit with pots, pans, plates, and utensils arranged on a kitchen table', summary: 'The essentials for preparing your own meals.', contents: ['Pans and cooking tools', 'Food preparation essentials'] }
   ];
   readonly listings: Listing[] = [
     { id: 1, name: 'Adjustable desk lamp', price: 12, condition: 'Refurbished', category: 'Room', icon: '💡', color: 'mint', description: 'Warm light, tested and ready for late-night study.' },
