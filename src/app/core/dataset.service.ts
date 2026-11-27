@@ -38,7 +38,7 @@ export class DatasetService {
     { id: 10, name: 'Yoga mat', image: '/images/marketplace/green-yoga-mat.jpeg', price: 6, condition: 'Refurbished', category: 'Sports', icon: '🧘', color: 'peach', description: 'Deep cleaned and rolled up, ready for room workouts.' },
     { id: 11, name: 'Bluetooth speaker', image: '/images/marketplace/speaker.jpeg', price: 15, condition: 'Refurbished', category: 'Tech', icon: '🔊', color: 'mint', description: 'Tested, charged and loud enough for a kitchen playlist.' },
     { id: 12, name: 'Over-ear headphones', image: '/images/marketplace/headphones.jpeg', price: 13, condition: 'Refurbished', category: 'Tech', icon: '🎧', color: 'lilac', description: 'For library focus, with fresh ear cushions fitted.' },
-    { id: 13, name: 'Laundry basket', price: 4, condition: 'Good condition', category: 'Laundry', icon: '🧼', color: 'peach', description: 'A sturdy basket with handles for the trip to the laundry room.' },
+    { id: 13, name: 'Laundry basket', image: '/images/marketplace/laundry-basket.jpeg', price: 4, condition: 'Good condition', category: 'Laundry', icon: '🧼', color: 'peach', description: 'A sturdy basket with handles for the trip to the laundry room.' },
     { id: 14, name: 'First-year textbook bundle', image: '/images/marketplace/textbooks.jpeg', price: 10, condition: 'Good condition', category: 'Books', icon: '📚', color: 'sand', description: 'Core reading for intro modules, with only light highlighting.' },
     { id: 15, name: 'Paperback novel stack', image: '/images/marketplace/paperback-novels.jpeg', price: 5, condition: 'Good condition', category: 'Books', icon: '📖', color: 'mint', description: 'Five paperbacks for reading beyond the module list.' }
   ];
